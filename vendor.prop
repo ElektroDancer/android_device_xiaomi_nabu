@@ -286,6 +286,7 @@ ro.hardware.egl=adreno
 ro.hardware.hwcomposer=qcom
 ro.hardware.vulkan=adreno
 ro.opengles.version=196610
+vendor.display.disable_metadata_dynamic_fps=1
 vendor.gralloc.disable_ubwc=0
 
 # Render
