@@ -41,3 +41,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     BuildDesc="nabu_global-user 13 RKQ1.200826.002 V816.0.1.0.TKXMIXM release-keys" \
     BuildFingerprint=Xiaomi/nabu_global/nabu:13/RKQ1.200826.002/V816.0.1.0.TKXMIXM:user/release-keys \
     DeviceProduct=$(DEVICE_CODENAME)
+
+# Set to true for building a ROM without GAPPS
+# Set to false for building a ROM with GAPPS included
+RESERVE_SPACE_FOR_GAPPS := true
