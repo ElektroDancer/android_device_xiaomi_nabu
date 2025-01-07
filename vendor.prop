@@ -283,6 +283,7 @@ debug.sf.hw=0
 debug.sf.predict_hwc_composition_strategy=0
 debug.sf.treat_170m_as_sRGB=1
 ro.hardware.egl=adreno
+ro.hardware.hwcomposer=qcom
 ro.hardware.vulkan=adreno
 ro.opengles.version=196610
 vendor.gralloc.disable_ubwc=0
@@ -290,6 +291,7 @@ vendor.gralloc.disable_ubwc=0
 # Media
 debug.stagefright.ccodec=1
 debug.stagefright.omx_default_rank=0
+vendor.video.disable.ubwc=1
 
 # OTG
 persist.sys.oem.otg_support=true
@@ -302,6 +304,9 @@ ro.vendor.extension_library=libqti-perfd-client.so
 
 # Sensors
 persist.vendor.sensors.enable.mag_filter=true
+
+# Screen
+persist.settings.large_screen_opt.enabled=true
 
 # Shutdown
 sys.vendor.shutdown.waittime=500
