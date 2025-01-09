@@ -294,6 +294,7 @@ vendor.gralloc.disable_ubwc=0
 # Render
 ro.hwui.use_vulkan=true
 ro.hwui.render_ahead=24
+ro.config.avoid_gfx_accel=true
 debug.hwui.renderer=opengl
 debug.renderengine.backend=skiaglthreaded
 renderthread.skia.reduceopstasksplitting=true
