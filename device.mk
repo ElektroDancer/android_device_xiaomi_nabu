@@ -80,10 +80,11 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml \
     frameworks/native/data/etc/android.software.device_admin.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.device_admin.xml \
     frameworks/native/data/etc/android.software.managed_users.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.managed_users.xml \
-    frameworks/native/data/etc/android.software.verified_boot.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.verified_boot.xml
+    frameworks/native/data/etc/android.software.verified_boot.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.verified_boot.xml \
+    $(LOCAL_PATH)/configs/android-removed-permissions.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android-removed-permissions.xml
 
 # Device is a Tablet
-PRODUCT_CHARACTERISTICS := tablet
+PRODUCT_CHARACTERISTICS := tablet,nosdcard
 TARGET_SCREEN_HEIGHT := 2560
 TARGET_SCREEN_WIDTH := 1600
 
@@ -191,18 +192,14 @@ USE_DEX2OAT_DEBUG := false
 # Display
 PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.4-service \
-    hwcomposer.msmnile
+    hwcomposer.qcom \
+    gralloc.qcom
 
 PRODUCT_PACKAGES += \
     android.hardware.graphics.mapper@3.0-impl-qti-display \
     android.hardware.graphics.mapper@4.0-impl-qti-display \
-    gralloc.msmnile \
-    vendor.qti.hardware.display.allocator-service
-
-PRODUCT_PACKAGES += \
-    android.hardware.memtrack@1.0-impl \
-    android.hardware.memtrack@1.0-service \
-    memtrack.msmnile
+    vendor.qti.hardware.display.allocator-service \
+    vendor.qti.hardware.memtrack-service
 
 PRODUCT_PACKAGES += \
     libdisplayconfig.qti \
