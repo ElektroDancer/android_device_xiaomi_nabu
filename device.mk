@@ -105,6 +105,15 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES_DEBUG += \
     bootctl
 
+# ART
+ART_BUILD_TARGET_NDEBUG := true
+ART_BUILD_TARGET_DEBUG := false
+ART_BUILD_HOST_NDEBUG := true
+ART_BUILD_HOST_DEBUG := false
+PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
+PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
+USE_DEX2OAT_DEBUG := false
+
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio@6.0-impl \
@@ -196,12 +205,12 @@ USE_DEX2OAT_DEBUG := false
 # Display
 PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.4-service \
-    hwcomposer.qcom \
-    gralloc.qcom
+    hwcomposer.qcom
 
 PRODUCT_PACKAGES += \
     android.hardware.graphics.mapper@3.0-impl-qti-display \
     android.hardware.graphics.mapper@4.0-impl-qti-display \
+    gralloc.qcom \
     vendor.qti.hardware.display.allocator-service \
     vendor.qti.hardware.memtrack-service
 

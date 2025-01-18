@@ -73,11 +73,12 @@ USE_CUSTOM_AUDIO_POLICY := 1
 # Camera
 TARGET_USES_QTI_CAMERA_DEVICE := true
 
-# Media
-TARGET_USES_ION := true
-
 # Display
 TARGET_SCREEN_DENSITY := 300
+
+# Media
+TARGET_DISABLED_UBWC := true
+TARGET_USES_ION := true
 
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
