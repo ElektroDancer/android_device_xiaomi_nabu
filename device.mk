@@ -92,15 +92,16 @@ PRODUCT_CHARACTERISTICS := tablet,nosdcard
 TARGET_SCREEN_HEIGHT := 2560
 TARGET_SCREEN_WIDTH := 1600
 
+# AAPT config
 PRODUCT_AAPT_CONFIG := normal
-PRODUCT_AAPT_PREF_CONFIG := 420dpi #440 works aswell but do we actually need it?.
-PRODUCT_AAPT_PREBUILT_DPI := xxxhdpi xxhdpi xhdpi hdpi
+PRODUCT_AAPT_PREF_CONFIG := xxxhdpi
+PRODUCT_AAPT_PREBUILT_DPI := xxxhdpi
 
 # Boot control
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.1-impl-qti \
-    android.hardware.boot@1.1-impl-qti.recovery \
-    android.hardware.boot@1.1-service
+    android.hardware.boot@1.2-impl-qti \
+    android.hardware.boot@1.2-impl-qti.recovery \
+    android.hardware.boot@1.2-service
 
 PRODUCT_PACKAGES_DEBUG += \
     bootctl
@@ -416,6 +417,11 @@ PRODUCT_PACKAGES += \
     init.target.rc \
     init.xiaomi.rc \
     ueventd.qcom.rc
+
+# IRQ Tuning
+PRODUCT_PACKAGES += \
+    init.mi_perf.rc \
+    init.mi_perf.sh
 
 # Sensors
 PRODUCT_PACKAGES += \
