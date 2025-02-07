@@ -11,6 +11,8 @@ set -e
 DEVICE=nabu
 VENDOR=xiaomi
 
+export TARGET_ENABLE_CHECKELF=false
+
 # Load extract_utils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "${MY_DIR}" ]]; then MY_DIR="${PWD}"; fi
