@@ -583,21 +583,27 @@ function configure_read_ahead_kb_values() {
     MemTotalStr=`cat /proc/meminfo | grep MemTotal`
     MemTotal=${MemTotalStr:16:8}
 
-    dmpts=$(ls /sys/block/*/queue/read_ahead_kb | grep -e dm -e mmc)
+    dmpts=$(ls /sys/block/*/queue | grep -e dm -e mmc)
 
     # Set 128 for <= 3GB &
     # set 512 for >= 4GB targets.
     if [ $MemTotal -le 3145728 ]; then
         echo 128 > /sys/block/mmcblk0/bdi/read_ahead_kb
+	echo 128 > /sys/block/mmcblk0/bdi/nr_requests
         echo 128 > /sys/block/mmcblk0rpmb/bdi/read_ahead_kb
+	echo 128 > /sys/block/mmcblk0rpmb/bdi/nr_requests
         for dm in $dmpts; do
-            echo 128 > $dm
+            echo 128 > $dm/read_ahead_kb
+            echo 128 > $dm/nr_requests
         done
     else
         echo 512 > /sys/block/mmcblk0/bdi/read_ahead_kb
+	echo 256 > /sys/block/mmcblk0/bdi/nr_requests
         echo 512 > /sys/block/mmcblk0rpmb/bdi/read_ahead_kb
+	echo 256 > /sys/block/mmcblk0rpmb/bdi/nr_requests
         for dm in $dmpts; do
-            echo 512 > $dm
+            echo 512 > $dm/read_ahead_kb
+            echo 256 > $dm/nr_requests
         done
     fi
 }
@@ -660,7 +666,7 @@ if [ "$ProductName" == "msmnile" ] || [ "$ProductName" == "kona" ] || [ "$Produc
       configure_zram_parameters
       configure_read_ahead_kb_values
       echo 0 > /proc/sys/vm/page-cluster
-      echo 100 > /proc/sys/vm/swappiness
+      echo 60 > /proc/sys/vm/swappiness
 else
     arch_type=`uname -m`
     MemTotalStr=`cat /proc/meminfo | grep MemTotal`
