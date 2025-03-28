@@ -16,3 +16,6 @@ use.voice.path.for.pcm.voip=true
 
 # radio
 ro.radio.noril=true
+
+# Media
+ro.odm.build.media_performance_class=30
