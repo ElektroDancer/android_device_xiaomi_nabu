@@ -108,12 +108,10 @@ PRODUCT_AAPT_PREBUILT_DPI := xxxhdpi
 
 # Boot control
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.2-impl-qti \
-    android.hardware.boot@1.2-impl-qti.recovery \
-    android.hardware.boot@1.2-service
+    android.hardware.boot-service.qti \
+    android.hardware.boot-service.qti.recovery
 
-PRODUCT_PACKAGES_DEBUG += \
-    bootctl
+$(call soong_config_set,QTI_GPT_UTILS,USE_BSG_FRAMEWORK,false)
 
 # ART
 ART_BUILD_TARGET_NDEBUG := true
@@ -379,6 +377,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.qcom \
     $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.qcom \
     $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.qcom
+
+$(call soong_config_set,libinit,vendor_init_lib,//$(LOCAL_PATH):init_nabu)
 
 PRODUCT_PACKAGES += \
     init.class_main.sh \
