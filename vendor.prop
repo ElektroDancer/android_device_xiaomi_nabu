@@ -189,19 +189,11 @@ ro.crypto.dm_default_key.options_format.version=2
 ro.crypto.volume.metadata.method=dm-default-key
 ro.crypto.volume.options=::v2
 
-# Dexopt
-dalvik.vm.dex2oat64.enabled=true
-pm.dexopt.first-boot=quicken
-pm.dexopt.bg-dexopt=everything
-pm.dexopt.boot=verify
-pm.dexopt.install=speed-profile
-dalvik.vm.image-dex2oat-filter=speed
-dalvik.vm.image-dex2oat-threads=8
-dalvik.vm.dex2oat-filter=speed
-dalvik.vm.dex2oat-threads=8
-dalvik.vm.dex2oat64.enabled=true
-dalvik.vm.minidebuginfo=false
-dalvik.vm.dex2oat-minidebuginfo=false
+# Dex2oat
+dalvik.vm.dex2oat-cpu-set=4,5,6,7
+dalvik.vm.dex2oat-threads=4
+dalvik.vm.image-dex2oat-cpu-set=4,5,6,7
+dalvik.vm.image-dex2oat-threads=4
 
 # Dalvik
 dalvik.vm.heapgrowthlimit=256m
@@ -271,6 +263,7 @@ debug.sf.auto_latch_unsignaled=0
 debug.sf.latch_unsignaled=1
 debug.sf.disable_backpressure=1
 debug.sf.disable_client_composition_cache=1
+ro.surface_flinger.supports_background_blur=1
 debug.sf.enable_advanced_sf_phase_offset=1
 debug.sf.enable_gl_backpressure=0
 debug.sf.enable_transaction_tracing=false

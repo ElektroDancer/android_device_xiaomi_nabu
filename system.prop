@@ -1,3 +1,6 @@
+# Animation override
+persist.sys.activity_anim_perf_override=true
+
 # Audio
 audio.offload.min.duration.secs=30
 persist.vendor.audio.hac.enable=false
@@ -32,3 +35,5 @@ persist.log.tag.ResourcesCompat=S
 persist.log.tag.CVP=S
 persist.log.tag.CamX=S
 persist.log.tag.a2dp_codec=S
+persist.log.tag.QC2Buf=W
+persist.log.tag.QC2V4l2Codec=E

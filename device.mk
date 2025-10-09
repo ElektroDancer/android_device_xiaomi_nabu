@@ -207,7 +207,6 @@ PRODUCT_PACKAGES += \
 
 # Dex
 PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
-PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := speed
 USE_DEX2OAT_DEBUG := false
 
 # Display
@@ -285,6 +284,9 @@ PRODUCT_PACKAGES += \
     ipacm \
     IPACM_cfg.xml
 
+# Kernel
+PRODUCT_ENABLE_UFFD_GC := true
+
 # Keylayout
 PRODUCT_PACKAGES += \
     sm8150-tavil-snd-card_Button_Jack.kl
@@ -345,6 +347,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_SOONG_NAMESPACES += \
     hardware/google/interfaces \
     hardware/google/pixel \
+    hardware/qcom/wlan \
     hardware/lineage/interfaces/power-libperfmgr \
     hardware/qcom-caf/common/libqti-perfd-client
 
@@ -374,6 +377,9 @@ PRODUCT_PACKAGES += \
 
 # init
 $(call soong_config_set,libinit,vendor_init_lib,//$(LOCAL_PATH):init_nabu)
+
+# Recovery
+$(call soong_config_set_bool,recovery,target_recovery_uses_qti_drm,true)
 
 # Rootdir
 PRODUCT_PACKAGES += \
