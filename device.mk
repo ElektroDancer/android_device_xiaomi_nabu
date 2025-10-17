@@ -22,13 +22,17 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
 # Conditionally inherit GMS makefiles
 ifneq ("$(wildcard vendor/gapps/arm64/arm64-vendor.mk)", "")
-$(warning Gapps directory was found, They'll be bundled in.)
 $(call inherit-product, vendor/gapps/arm64/arm64-vendor.mk)
+$(warning Gapps directory was found, They'll be bundled in.)
+WITHOUT_RESERVED_SIZE=true
+WITH_GMS=true
 endif
 
+# Conditionally inherit Viper4AndroidFX & disable audioFX.
 ifneq ("$(wildcard packages/apps/ViPER4AndroidFX/config.mk)", "")
 $(warning Enabling Viper4Android audio effect.)
 $(call inherit-product, packages/apps/ViPER4AndroidFX/config.mk)
+TARGET_EXCLUDES_AUDIOFX := true
 endif
 
 # Symlinks
@@ -88,6 +92,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.hardware.ethernet.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.ethernet.xml \
     frameworks/native/data/etc/android.software.ipsec_tunnels.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.ipsec_tunnels.xml \
+    frameworks/native/data/etc/android.software.ipsec_tunnel_migration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.ipsec_tunnel_migration.xml \
     frameworks/native/data/etc/android.software.midi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.midi.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml \
