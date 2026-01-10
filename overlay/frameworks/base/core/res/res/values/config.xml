@@ -473,6 +473,7 @@
     <!-- Indicate available ColorDisplayManager.COLOR_MODE_xxx. -->
     <integer-array name="config_availableColorModes">
         <item>0</item> <!-- COLOR_MODE_NATURAL   -->
+        <item>2</item> <!-- COLOR_MODE_SATURATED -->
         <item>1</item> <!-- COLOR_MODE_BOOSTED   -->
         <item>3</item> <!-- COLOR_MODE_AUTOMATIC -->
     </integer-array>
@@ -528,4 +529,10 @@
     <!-- Whether WM DisplayContent supports high performance transitions
          (lower-end devices may want to disable) -->
     <bool name="config_deviceSupportsHighPerfTransitions">false</bool>
+
+    <!-- Whether to show a warning notification when device's skin temperature is high. -->
+    <integer name="config_showTemperatureWarning">1</integer>
+
+    <!-- Whether to show a alarm dialog when device's usb port is overheating. -->
+    <integer name="config_showUsbPortAlarm">1</integer>
 </resources>
