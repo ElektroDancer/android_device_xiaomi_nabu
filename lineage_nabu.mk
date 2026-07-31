@@ -21,12 +21,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 
 DEVICE_CODENAME := nabu
 
-# Signing keys (Private).
-ifneq ("$(wildcard vendor/harshit/product.mk)", "")
-$(warning Dev keys were found and will be used.)
-$(call inherit-product, vendor/harshit/product.mk)
-endif
-
 # Inherit device configuration for nabu.
 $(call inherit-product, device/xiaomi/nabu/device.mk)
 
@@ -46,3 +40,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     BuildDesc="nabu_global-user 13 RKQ1.200826.002 V816.0.1.0.TKXMIXM release-keys" \
     BuildFingerprint=Xiaomi/nabu_global/nabu:13/RKQ1.200826.002/V816.0.1.0.TKXMIXM:user/release-keys \
     DeviceProduct=$(DEVICE_CODENAME)
+
+# Set to true for building a ROM without GAPPS
+# Set to false for building a ROM with GAPPS included
+RESERVE_SPACE_FOR_GAPPS := true
