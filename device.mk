@@ -269,6 +269,9 @@ PRODUCT_PACKAGES += \
     libcrypto_shim \
     libcrypto_shim.vendor
 
+# Face unlock
+TARGET_FACE_UNLOCK_SUPPORTED := true
+
 # F2FS utilities
 PRODUCT_PACKAGES += \
     sg_write_buffer \
