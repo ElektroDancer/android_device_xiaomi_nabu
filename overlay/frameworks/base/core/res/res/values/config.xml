@@ -565,4 +565,10 @@
         <item>com.twitter.android:0.07</item>
         <item>com.google.android.youtube:0.07</item>
     </string-array>
+
+    <!-- Xiaomi Fast Charging support -->
+    <bool name="config_hasTurboPowerCharger">true</bool>
+    <string name="config_oemFastChargerStatusPath" translatable="false">/sys/class/power_supply/battery/quick_charge_type</string>
+    <string name="config_oemFastChargerStatusPath2" translatable="false">/sys/class/power_supply/bms/fastcharge_mode</string>
+    <string name="config_oemFastChargerStatusValue" translatable="false">1,2,3,4</string>
 </resources>
