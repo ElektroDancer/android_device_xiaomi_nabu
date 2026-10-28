@@ -10,6 +10,7 @@ vintf_fragment {
 rust_binary {
     name: "custom.hardware.hwcontrol-service",
     vintf_fragment_modules: ["custom.hardware.hwcontrol.xml"],
+    vendor: true,
     init_rc: ["custom.hardware.hwcontrol.rc"],
     srcs: [
         "src/main.rs",
