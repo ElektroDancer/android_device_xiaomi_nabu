@@ -5,7 +5,7 @@
 #
 
 # Setup dalvik vm configs
-$(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
+$(call inherit-product, frameworks/native/build/phone-xhdpi-8192-dalvik-heap.mk)
 
 # A/B
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
@@ -127,7 +127,6 @@ ART_BUILD_HOST_NDEBUG := true
 ART_BUILD_HOST_DEBUG := false
 PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
 PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
-USE_DEX2OAT_DEBUG := false
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -208,10 +207,6 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.camera.device@1.0.vendor \
     vendor.qti.hardware.camera.postproc@1.0.vendor
 
-# Configstore
-PRODUCT_PACKAGES += \
-    disable_configstore
-
 # Charger
 PRODUCT_PACKAGES += \
     libsuspend
@@ -227,6 +222,9 @@ PRODUCT_PACKAGES += \
 # Dex
 PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
 USE_DEX2OAT_DEBUG := false
+WITH_DEXPREOPT := true
+DEX_PREOPT_DEFAULT := generate-vdex-and-image
+WITH_DEXPREOPT_DEBUG_INFO := false
 
 # Display
 PRODUCT_PACKAGES += \
@@ -273,10 +271,8 @@ PRODUCT_PACKAGES += \
     libcrypto_shim \
     libcrypto_shim.vendor
 
-# fastbootd
-PRODUCT_PACKAGES += \
-    android.hardware.fastboot@1.0-impl-mock \
-    fastbootd
+# Face unlock
+TARGET_FACE_UNLOCK_SUPPORTED := true
 
 # F2FS utilities
 PRODUCT_PACKAGES += \
@@ -305,13 +301,17 @@ PRODUCT_PACKAGES += \
     libhidltransport.vendor \
     libhwbinder.vendor
 
+# ION
+$(call soong_config_set_bool,libion,legacy_impl,true)
+
 # IPACM
 PRODUCT_PACKAGES += \
     ipacm \
     IPACM_cfg.xml
 
 # Kernel
-PRODUCT_ENABLE_UFFD_GC := true
+PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
+PRODUCT_SET_DEBUGFS_RESTRICTIONS := true
 
 # Keylayout
 PRODUCT_PACKAGES += \
@@ -372,7 +372,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_SOONG_NAMESPACES += \
     hardware/google/interfaces \
-    hardware/google/pixel \
+    hardware/google/pixel/power-libperfmgr \
     hardware/qcom/wlan \
     hardware/lineage/interfaces/power-libperfmgr \
     hardware/qcom-caf/common/libqti-perfd-client
